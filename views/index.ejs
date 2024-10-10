@@ -17,10 +17,16 @@
                 <div class="card-content">
                   <span class="card-title">ToDo list</span>
                   <div class="row">
-                    <form class="col s12">
+                    <form class="col s12" method="post" action"/">
                       <div class="row">
                         <div class="input-field col s6">
-                          <input placeholder="Task" id="task_name" type="text" class="validate">
+                          <input 
+                              placeholder="Task" 
+                              id="task_name" 
+                              type="text" 
+                              class="validate"
+                              name="task"
+                              >
                           <label for="task_name">Insert task</label>
                         </div>
                     </div>
@@ -30,10 +36,9 @@
                 </div>
                 <div class="card-action">
                     <ul class="collection">
-                        <li class="collection-item">Study HTML</li>
-                        <li class="collection-item">Study CSS</li>
-                        <li class="collection-item">Study JS</li>
-                        <li class="collection-item">Study Express</li>
+                      <%  tasks.forEach(task => { %>
+                        <li class="collection-item"><%= task%></li>
+                        <% }) %>
                       </ul>
                 </div>
               </div>
