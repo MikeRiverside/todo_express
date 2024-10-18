@@ -4,6 +4,7 @@ const fs = require("node:fs");
 
 const app = express()
 
+
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs")
@@ -16,14 +17,14 @@ const readFile = (tasks) => {
                 console.error(err);
                 return;
             }
-            const tasks = data.split("\n")
+            const tasks = JSON.parse(data)
             resolve(tasks)
         });
     })
 }
 
 app.get("/", (req, res) => {
-    readFile("./tasks")
+    readFile("./tasks.json")
         .then((tasks) => {
             console.log(tasks)
             res.render("index", {tasks: tasks})
@@ -33,12 +34,30 @@ app.get("/", (req, res) => {
 app.post("/", (req, res) => {
     console.log("Saadetud andmed")
     let task = req.body.task
-    readFile("./tasks")
+    readFile("./tasks.json")
     .then(tasks => {
-        tasks.push(task)
+        // add new task
+        //create ID automatically
+        let index
+        if (tasks.length === 0)
+        {
+            index = 0
+        } else {
+            index = tasks[tasks.length-1].id +1;
+        }
+        // create task object
+        const newTask = {
+            "id" : index,
+            "task" : req.body.task
+        }
+        console.log (newTask)
+        // add form sent task to tasks array
+        tasks.push(newTask)
         console.log(tasks)
-        const data = tasks.join("\n")
-        fs.writeFile('./tasks', data, err => {
+        data = JSON.stringify(tasks, null, 2)
+        console.log(data)
+
+        fs.writeFile('./tasks.json', data, err => {
             if (err) {
               console.error(err);
             } else {

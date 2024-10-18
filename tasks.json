@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "task": "Study HTML"
+  },
+  {
+    "id": 2,
+    "task": "Study JS"
+  },
+  {
+    "id": 3,
+    "task": "Study CSS"
+  },
+  {
+    "id": 4,
+    "task": "Study OOP"
+  },
+  {
+    "id": 5,
+    "task": "Study WEB"
+  },
+  {
+    "id": 6,
+    "task": "Study ..."
+  },
+  {
+    "id": 7,
+    "task": "Lisatudyks"
+  },
+  {
+    "id": 8,
+    "task": "Lisatudkaks"
+  },
+  {
+    "id": 9,
+    "task": "Lisatudkolm"
+  }
+]
