@@ -6,7 +6,7 @@
     
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-     
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>ToDo list</title>
 </head>
 <body>
@@ -37,7 +37,11 @@
                 <div class="card-action">
                     <ul class="collection">
                       <%  tasks.forEach(task => { %>
-                        <li class="collection-item"><%= task.task%></li>
+                        <li class="collection-item">
+                          <%= task.task%>
+                           <a href="delete-task/<%= task.id %>" class="secondary-content"> 
+                            <i class="material-icons">delete_forever</i></a>
+                        </li>
                         <% }) %>
                       </ul>
                 </div>
