@@ -25,45 +25,31 @@
                   <% } %> 
                   <span class="card-title">Todo List</span>
                   <div class="row">
-                    <form class="col s12" method="post" action="/">
+                    <form class="col s12" method="post" action="/update-task">
                       <div class="row">
                         <div class="input-field col s6">
                           <input 
-                              placeholder="Task" 
+                              value="<%= updateTask%>" 
                               id="task" 
                               type="text" 
                               class="validate"
                               name="task"
                           >
-                          <label for="task">Insert task</label>
+                          <label for="task">Update task</label>
+                          <input 
+                              value="<%= updateTaskId%>"" 
+                              id="taskId" 
+                              type="hidden"                             
+                              name="taskId"
+                            
+                          >
                         </div>
                       </div>
-                      <input type="submit" value="Add Task" class="btn"/>
+                      <input type="submit" value="Update Task" class="btn"/>
+                      <a href="/" class="btn">Cancel</a>
                     </form>
                   </div>
                 </div>
-                <div class="card-action">
-                    <ul class="collection">
-                      <% tasks.forEach(task => { %>
-                        <li class="collection-item">
-                          <%= task.task %>
-                          <a 
-                            href="delete-task/<%= task.id %>" 
-                            class="secondary-content"
-                          >
-                            <i class="material-icons">delete</i>
-                          </a>
-                          <a 
-                            href="update-task/<%= task.id %>" 
-                            class="secondary-content"
-                          >
-                            <i class="material-icons">mode_edit</i>
-                        </a>
-                        </li>
-                      <% }) %>
-
-                      </ul>
-                      <a href="delete-tasks" class="btn">Clear All</a>
                 </div>
               </div>
             </div>
